@@ -77,10 +77,6 @@ def handle_text_message(event):
     
     try:
         client.connect(broker_address, port=port)
-        client.subscribe("@msg/#")
-        client.loop_start()
-        time.sleep(0.5) 
-        client.loop_stop()
     except:
         print("Connection failed")
     
@@ -109,7 +105,11 @@ def handle_text_message(event):
         text_out = "เปิดไฟสีน้ำเงินเรียบร้อยแล้ว"
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
 
-    if (text=="อุณหภูมิและความชื้น"):        
+    if (text=="อุณหภูมิและความชื้น"):
+        client.subscribe("@msg/#")
+        client.loop_start()
+        time.sleep(1) 
+        client.loop_stop()
         text_out = "อุณหภูมิ " + temp + " ความชื้น " + humi
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
              
