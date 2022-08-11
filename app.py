@@ -38,17 +38,18 @@ client = mqttClient.Client("09adabca-409b-48c8-a54d-7611665c3c63")
 client.username_pw_set(user, password=password)    
 client.on_connect = on_connect
 client.on_message = on_message
+client.subscribe("@msg/#", qos=0)
 
-try:
-    client.connect(broker_address, port=port)
-except:
-    print("Connection failed")
+#try:
+#    client.connect(broker_address, port=port)
+#except:
+#    print("Connection failed")
 
     #client.loop_start()
     #while Connected != True:  
     #    time.sleep(0.1)
     
-#client.subscribe("@msg/#", qos=0)
+#
 
 
 line_bot_api = LineBotApi(channel_access_token)
