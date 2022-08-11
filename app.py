@@ -48,7 +48,7 @@ except:
     #while Connected != True:  
     #    time.sleep(0.1)
     
-client.subscribe("@msg/#", qos=0)
+#client.subscribe("@msg/#", qos=0)
 
 
 line_bot_api = LineBotApi(channel_access_token)
@@ -72,10 +72,11 @@ def handle_text_message(event):
     global temp,humi
     text = event.message.text
     print(text)
-    try:
-        client.connect(broker_address, port=port)
-    except:
-        print("Connection failed")
+    
+    #try:
+    #    client.connect(broker_address, port=port)
+    #except:
+    #    print("Connection failed")
     
     if (text=="เปิดไฟ"):
         client.publish("@msg/led","ledon")
