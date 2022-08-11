@@ -38,7 +38,7 @@ client = mqttClient.Client("09adabca-409b-48c8-a54d-7611665c3c63")
 client.username_pw_set(user, password=password)    
 client.on_connect = on_connect
 client.on_message = on_message
-#client.subscribe("@msg/#", qos=0)
+#client.subscribe("@msg/#")
 
 #try:
 #    client.connect(broker_address, port=port)
@@ -76,7 +76,6 @@ def handle_text_message(event):
     
     try:
         client.connect(broker_address, port=port)
-        client.subscribe("@msg/#", qos=0)
     except:
         print("Connection failed")
     
@@ -105,7 +104,8 @@ def handle_text_message(event):
         text_out = "เปิดไฟสีน้ำเงินเรียบร้อยแล้ว"
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
 
-    if (text=="อุณหภูมิและความชื้น"):        
+    if (text=="อุณหภูมิและความชื้น"):
+        client.subscribe("@msg/#")
         text_out = "อุณหภูมิ " + temp + " ความชื้น " + humi
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
              
