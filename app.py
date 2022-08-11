@@ -40,12 +40,11 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 
-try:
-    client.connect(broker_address, port=port)
-    client.loop_start()
-    client.subscribe("@msg/#")    
-except:
-    print("Connection failed")
+#try:
+#    client.connect(broker_address, port=port)
+#    client.subscribe("@msg/#")    
+#except:
+#    print("Connection failed")
 
     #client.loop_start()
     #while Connected != True:  
