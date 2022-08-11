@@ -42,7 +42,8 @@ client.on_message = on_message
 
 try:
     client.connect(broker_address, port=port)
-    client.subscribe("@msg/#")
+    client.loop_start()
+    client.subscribe("@msg/#")    
 except:
     print("Connection failed")
 
@@ -76,8 +77,7 @@ def handle_text_message(event):
     print(text)
     
     try:
-        client.connect(broker_address, port=port)
-        client.subscribe("@msg/#")
+        client.connect(broker_address, port=port)        
     except:
         print("Connection failed")
     
