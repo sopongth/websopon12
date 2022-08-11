@@ -32,20 +32,21 @@ def on_message(client, userdata, msg):
 Connected = False 
 broker_address= "mqtt.netpie.io"
 port = 1883
-user = "hccZHSHSx4iWsctxLAV6wdD8bLpdwdzR"
-password = "LYtiJZZQwnMmSIbmg9Ol$YUw$y$z_RSg" 
-client = mqttClient.Client("42e804ba-e8b8-4ac5-96f5-3f0a818a6378")               
+user = "cvf4xPBERb9QDrmG8TaNi6gmMhn9jvHW"
+password = "mnmp3A04kGHUL(DwkyYvWK0B2!gp(nbz" 
+client = mqttClient.Client("09adabca-409b-48c8-a54d-7611665c3c63")               
 client.username_pw_set(user, password=password)    
 client.on_connect = on_connect
 client.on_message = on_message
+
 try:
     client.connect(broker_address, port=port)
 except:
     print("Connection failed")
 
-client.loop_start()
-while Connected != True:  
-    time.sleep(0.1)
+    #client.loop_start()
+    #while Connected != True:  
+    #    time.sleep(0.1)
     
 client.subscribe("@msg/#", qos=0)
 
