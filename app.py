@@ -36,7 +36,7 @@ user = "cvf4xPBERb9QDrmG8TaNi6gmMhn9jvHW"
 password = "mnmp3A04kGHUL(DwkyYvWK0B2!gp(nbz" 
 client = mqttClient.Client("09adabca-409b-48c8-a54d-7611665c3c63")               
 client.username_pw_set(user, password=password)    
-client.on_connect = on_connect
+#client.on_connect = on_connect
 client.on_message = on_message
 
 
@@ -77,6 +77,7 @@ def handle_text_message(event):
     
     try:
         client.connect(broker_address, port=port)
+        
     except:
         print("Connection failed")
     
@@ -108,11 +109,11 @@ def handle_text_message(event):
     if (text=="อุณหภูมิและความชื้น"):
         client.subscribe("@msg/#")
         client.loop_start()
+        time.sleep(1.5) 
+        client.loop_stop()
         text_out = "อุณหภูมิ " + temp + " ความชื้น " + humi
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
-        time.sleep(2) 
-        client.loop_stop()
-             
+                     
 if __name__ == "__main__":          
     app.run()
 
