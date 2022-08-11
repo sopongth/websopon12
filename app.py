@@ -42,6 +42,7 @@ client.on_message = on_message
 
 try:
     client.connect(broker_address, port=port)
+    client.subscribe("@msg/#")
 except:
     print("Connection failed")
 
@@ -49,7 +50,7 @@ except:
     #while Connected != True:  
     #    time.sleep(0.1)
     
-client.subscribe("@msg/#")
+
 
 
 line_bot_api = LineBotApi(channel_access_token)
@@ -105,8 +106,7 @@ def handle_text_message(event):
         text_out = "เปิดไฟสีน้ำเงินเรียบร้อยแล้ว"
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
 
-    if (text=="อุณหภูมิและความชื้น"):
-        
+    if (text=="อุณหภูมิและความชื้น"):        
         text_out = "อุณหภูมิ " + temp + " ความชื้น " + humi
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
              
