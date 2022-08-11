@@ -108,7 +108,7 @@ def handle_text_message(event):
     if (text=="อุณหภูมิและความชื้น"):
         client.subscribe("@msg/#")
         client.loop_start()
-        time.sleep(1) 
+        time.sleep(2) 
         client.loop_stop()
         text_out = "อุณหภูมิ " + temp + " ความชื้น " + humi
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text_out))
