@@ -73,10 +73,10 @@ def handle_text_message(event):
     text = event.message.text
     print(text)
     
-    #try:
-    #    client.connect(broker_address, port=port)
-    #except:
-    #    print("Connection failed")
+    try:
+        client.connect(broker_address, port=port)
+    except:
+        print("Connection failed")
     
     if (text=="เปิดไฟ"):
         client.publish("@msg/led","ledon")
