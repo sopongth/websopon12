@@ -28,7 +28,6 @@ def on_message(client, userdata, msg):
         humi = msg.payload.decode('utf-8')
         print(humi)
         
-
 Connected = False 
 broker_address= "mqtt.netpie.io"
 port = 1883
@@ -38,7 +37,6 @@ client = mqttClient.Client("09adabca-409b-48c8-a54d-7611665c3c63")
 client.username_pw_set(user, password=password)    
 #client.on_connect = on_connect
 client.on_message = on_message
-
 
 #try:
 #    client.connect(broker_address, port=port)
@@ -76,8 +74,7 @@ def handle_text_message(event):
     print(text)
     
     try:
-        client.connect(broker_address, port=port)
-        
+        client.connect(broker_address, port=port)        
     except:
         print("Connection failed")
     
