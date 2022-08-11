@@ -79,6 +79,7 @@ def handle_text_message(event):
         client.connect(broker_address, port=port)
         client.subscribe("@msg/#")
         client.loop_start()
+        time.sleep(4) 
         client.loop_stop()
     except:
         print("Connection failed")
