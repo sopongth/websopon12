@@ -76,6 +76,7 @@ def handle_text_message(event):
     
     try:
         client.connect(broker_address, port=port)
+        client.subscribe("@msg/#", qos=0)
     except:
         print("Connection failed")
     
